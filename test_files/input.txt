@@ -1,0 +1,23 @@
+Enter company name: Tesla
+Enter robot name: Optimus
+Enter robot version: sfksfkof
+Enter robot price: 345.56
+Add a main component? (y/n): Y
+Enter component name: Methonal Sensor
+Enter component weight (kg): 1.5
+Do you want to register another robot? (y/n): Y
+Enter company name: IBM
+Enter robot name: Bheem
+Enter robot version: fjwefwp
+Enter robot price: 45986.56
+Add a main component? (y/n): Y
+Enter component name: Laser cutter
+Enter component weight (kg): 4.7
+Do you want to register another robot? (y/n): Y
+Enter company name: GE
+Enter robot name: Bheem
+Enter robot version: josjefj
+Enter robot price: 45.4564
+Add a main component? (y/n): Y
+Enter component name: smoke detector
+Enter component weight (kg): 4.56

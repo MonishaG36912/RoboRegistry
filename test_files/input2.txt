@@ -1,0 +1,25 @@
+Enter company name: Tesla
+Enter robot name: Optimus
+Enter robot version: sfksfkof
+Enter robot price: 345.56
+Add a main component? (y/n): Y
+Enter component name: Methonal Sensor
+Enter component weight (kg): 1.5
+
+Do you want to register another robot? (y/n): Y
+Enter company name: NoComponentTest1
+Enter robot name: one
+Enter robot version: input2
+Enter robot price: 1
+Add a main component? (y/n): n
+Robot added successfully!
+
+Do you want to register another robot? (y/n): Y
+Enter company name: NoComponentTest2
+Enter robot name: two
+Enter robot version: input2
+Enter robot price: 2
+Add a main component? (y/n): n
+Robot added successfully!
+
+Do you want to register another robot? (y/n): n

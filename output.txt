@@ -1,0 +1,29 @@
+
+Registered Humanoid Robots:
++---------+---------+----------+----------+
+| Company | Name    | Version  | Price |
++---------+---------+----------+----------+
+| Tesla   | Optimus | sfksfkof | $345.56    |
+| IBM     | Bheem   | fjwefwp  | $45986.56  |
+| GE      | Bheem   | josjefj  | $45.46     |
++---------+---------+----------+----------+
+
+Polymorphic Robot Demonstrations:
+Industrial robot IND-001 assembling products at Factory A
+Industrial Robot | SN: IND-001 | Location: Factory A | Capacity: 50.50 units/year
+
+Domestic robot DOM-001 performing Cleaning at Home 1
+Domestic Robot | SN: DOM-001 | Home: Home 1 | Task: Cleaning
+
+Industrial robot IND-002 assembling products at Factory B
+Industrial Robot | SN: IND-002 | Location: Factory B | Capacity: 75.00 units/year
+
+
+Robots above $1000.00:
+Company: IBM | Name: Bheem | Version: fjwefwp | Price: $45986.56 | Main Component: Component: Laser cutter | Weight: 4.70kg
+
+Robot as string: Robot SN: IND-003
+
+Domestic Robot via stream insertion:
+Domestic Robot | SN: DOM-002 | Home: Home 2 | Task: Cooking
+
