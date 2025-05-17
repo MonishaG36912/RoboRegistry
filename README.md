@@ -1,16 +1,7 @@
 # RoboRegistry
-# Instructions to Run the Program
-1. When prompted with:
-    ```
-    Choose input method:
-    1. Input manually
-    2. Load input from file
-    Enter your choice (1 or 2):
-    ```
-    type `2` and press Enter.
-2. When prompted with:
-    ```
-    Enter filename:
-    ```
-    type `test_files/input3.txt` and press Enter.
-    Because inputs for my version of the workspace is in the test_files folder. 
+# Version: [Due 05/22]
+- Version 1: File I/O [05/14]
+- version 2: cleaning output file [05/17]
+- version 3: description of table [05/18]
+- version 4: hash the table contents. Look at the running time for seraching with and without hash. 
+- version 5: improve hash search with asking for two feature searchs like componet and money (find companies that have senor and less than $200)
