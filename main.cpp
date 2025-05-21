@@ -319,65 +319,77 @@ void displayGreeting() {
 }
 
 int main() {
-    displayGreeting();
-
     RobotRegistry registry;
+    bool running = true;
+    bool menuShown = false;
 
-    int option;
+    while (running) {
+        if (!menuShown) {
+            cout << "\n===== Robot Registry Menu =====\n";
+            cout << "1. Load robots from file\n";
+            cout << "2. Add a new robot\n";
+            cout << "3. Display all robots\n";
+            cout << "4. Show robots above a price\n";
+            cout << "5. Display polymorphic robots\n";
+            cout << "6. Menu\n";
+            cout << "7. Exit\n";
+            cout << "===============================\n";
+            menuShown = true;
+        }
 
-    cout << "Choose input method:\n";
-    cout << "1. Input manually\n";
-    cout << "2. Load input from file\n";
-    cout << "Enter your choice (1 or 2): ";
-    cin >> option;
-    cin.ignore();
+        cout << "\nEnter your choice (6 to show menu): ";
+        int choice;
+        cin >> choice;
+        cin.ignore(); // Clear newline after number input
 
-    if (option == 1) {
-        char choice;
-        do {
-            try {
+        switch (choice) {
+            case 1: {
+                string filename;
+                cout << "Enter filename: ";
+                getline(cin, filename);
+                registry.readFromFile(filename);
+                break;
+            }
+            case 2:
                 registry.promptUserForRobot();
-            } catch (const exception& e) {
-                cerr << "Error: " << e.what() << endl;
-                continue;
+                break;
+            case 3:
+                registry.displayRobots();
+                break;
+          
+            case 4: {
+                double minPrice;
+                cout << "Enter minimum price: ";
+                cin >> minPrice;
+                cin.ignore();
+                auto filter = registry.getExpensiveRobotsFilter(minPrice);
+                filter(); // call the lambda
+                break;
+            }
+            case 5:
+                registry.displayPolymorphicRobots();
+                break;
+            case 6:{
+                cout << "\n===== Robot Registry Menu =====\n";
+                cout << "1. Load robots from file\n";
+                cout << "2. Add a new robot\n";
+                cout << "3. Display all robots\n";
+                cout << "4. Show robots above a price\n";
+                cout << "5. Display polymorphic robots\n";
+                cout << "6. Menu\n";
+                cout << "7. Exit\n";
+                cout << "===============================\n";
+                break;
             }
 
-            cout << "\nDo you want to register another robot? (y/n): ";
-            cin >> choice;
-            cin.ignore();
-        } while (choice == 'y' || choice == 'Y');
-        registry.redirectOutputToFile();
-
-    } else if (option == 2) {
-        string filename;
-        cout << "Enter filename: ";
-        cin >> filename;
-        registry.readFromFile(filename);
-        registry.redirectOutputToFile();
-
-    } else {
-        cout << "Invalid option. Exiting.\n";
-        return 1;
+            case 7:
+                running = false;
+                cout << "Exiting...\n";
+                break;
+            default:
+                cout << "Invalid choice. Try again.\n";
+        }
     }
-
-    cout << "\nRegistered Humanoid Robots:\n";
-    registry.displayRobots();
-    
-    // Demonstrate polymorphic behavior
-    registry.displayPolymorphicRobots();
-    
-    // Demonstrate lambda usage
-    auto showExpensive = registry.getExpensiveRobotsFilter(1000);
-    showExpensive();
-
-    // Demonstrate conversion
-    IndustrialRobot indRobot("IND-003", "Factory C", 60.0);
-    string robotStr = indRobot;  // Conversion to string
-    cout << "\nRobot as string: " << robotStr << endl;
-    
-    // Demonstrate stream insertion
-    DomesticRobot domRobot("DOM-002", "Home 2", "Cooking");
-    cout << "\nDomestic Robot via stream insertion:\n" << domRobot << endl;
 
     return 0;
 }
