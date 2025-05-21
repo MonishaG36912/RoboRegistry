@@ -322,7 +322,7 @@ int main() {
     RobotRegistry registry;
     bool running = true;
     bool menuShown = false;
-
+    displayGreeting();
     while (running) {
         if (!menuShown) {
             cout << "\n===== Robot Registry Menu =====\n";
