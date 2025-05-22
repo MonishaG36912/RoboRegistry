@@ -5,6 +5,7 @@
 #include <sstream>
 #include <utility>
 #include <stdexcept>
+#include <map>
 
 using namespace std;
 
@@ -65,6 +66,7 @@ RobotRegistry::~RobotRegistry() {
     for (int i = 0; i < polySize; i++) delete polymorphicRobots[i];
     delete[] polymorphicRobots;
 }
+
 void RobotRegistry::growArray() {
     capacity *= 2;
     HumanoidRobot* newRobots = new HumanoidRobot[capacity];
@@ -132,6 +134,14 @@ void RobotRegistry::displayRobots() const {
              << string(versionWidth, '-') << "+"
              << string(priceWidth, '-') << "+\n";
     }
+std::multimap<double, std::string> RobotRegistry::getCompanyPrices() const {
+    std::multimap<double, std::string> companyPrices;
+    for (int i = 0; i < size; i++) {
+        companyPrices.insert({robots[i].price, robots[i].company});
+    }
+    
+    return companyPrices;
+}
 void RobotRegistry::displayPolymorphicRobots() const {
     cout << "\nPolymorphic Robot Demonstrations:\n";
     for (int i = 0; i < polySize; i++) {

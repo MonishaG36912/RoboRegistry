@@ -6,6 +6,8 @@
 #include <string>
 #include <functional>
 #include <stdexcept>
+#include <map>
+
 
 #include "Robot.h"
 #include "MilitaryRobot.h"
@@ -46,13 +48,14 @@ private:
     int size, polySize, capacity;
     PriceValidator validatePrice;
     StringValidator validateString;
-
     void growArray();
     void computeColumnWidths(size_t& nameWidth, size_t& companyWidth, size_t& versionWidth) const;
 
 public:
     RobotRegistry();
     ~RobotRegistry();
+    multimap<double, std::string> getCompanyPrices() const; 
+
     void addRobot(std::string&& company, std::string&& name, std::string&& version, double price, RobotComponent* component = nullptr);
     void displayRobots() const;
     void displayPolymorphicRobots() const;

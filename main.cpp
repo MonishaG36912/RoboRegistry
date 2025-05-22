@@ -1,4 +1,7 @@
 #include <iostream>
+#include <iomanip> // For std::setprecision and std::fixed
+#include <string>
+#include <map>
 
 #include "src/RobotRegistry.h"
 
@@ -11,18 +14,19 @@ int main() {
     while (running) {
         if (!menuShown) {
             cout << "\n===== Robot Registry Menu =====\n";
-            cout << "1. Load robots from file\n";
-            cout << "2. Add a new robot\n";
-            cout << "3. Display all robots\n";
-            cout << "4. Show robots above a price\n";
-            cout << "5. Display polymorphic robots\n";
-            cout << "6. Menu\n";
-            cout << "7. Exit\n";
-            cout << "===============================\n";
+                cout << "1. Load robots from file\n";
+                cout << "2. Add a new robot\n";
+                cout << "3. Display all robots\n";
+                cout << "4. Summary of prize";
+                cout << "5. Show robots above a price\n";
+                cout << "6. Display polymorphic robots\n";
+                cout << "7. Menu\n";
+                cout << "8. Exit\n";
+                cout << "===============================\n";
             menuShown = true;
         }
 
-        cout << "\nEnter your choice (6 to show menu): ";
+        cout << "\nEnter your choice (7 to show menu): ";
         int choice;
         cin >> choice;
         
@@ -46,11 +50,19 @@ int main() {
             case 2:
                 registry.promptUserForRobot();
                 break;
-            case 3:
+            case 3: {
                 registry.displayRobots();
                 break;
-          
+            }
             case 4: {
+                auto prices = registry.getCompanyPrices();
+                for (const auto& entry : prices) {
+                cout << "Price: $" << fixed << setprecision(2) << entry.first
+                    << ", Company: " << entry.second << "\n";}
+                break;
+            }
+          
+            case 5: {
                 double minPrice;
                 cout << "Enter minimum price: ";
                 cin >> minPrice;
@@ -59,23 +71,24 @@ int main() {
                 filter(); // call the lambda
                 break;
             }
-            case 5:
+            case 6:
                 registry.displayPolymorphicRobots();
                 break;
-            case 6:{
+            case 7:{
                 cout << "\n===== Robot Registry Menu =====\n";
                 cout << "1. Load robots from file\n";
                 cout << "2. Add a new robot\n";
                 cout << "3. Display all robots\n";
-                cout << "4. Show robots above a price\n";
-                cout << "5. Display polymorphic robots\n";
-                cout << "6. Menu\n";
-                cout << "7. Exit\n";
+                cout << "4. Summary of prize";
+                cout << "5. Show robots above a price\n";
+                cout << "6. Display polymorphic robots\n";
+                cout << "7. Menu\n";
+                cout << "8. Exit\n";
                 cout << "===============================\n";
                 break;
             }
 
-            case 7:
+            case 8:
                 running = false;
                 cout << "Exiting...\n";
                 break;
