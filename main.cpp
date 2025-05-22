@@ -5,6 +5,37 @@
 
 #include "src/RobotRegistry.h"
 
+void printPriceSummary(const std::multimap<double, std::string>& companyPrices) {
+    if (companyPrices.empty()) {
+        std::cout << "No robots registered.\n";
+        return;
+    }
+
+    // Since multimap is sorted by price (key), begin() is min, rbegin() is max
+    auto minEntry = *companyPrices.begin();
+    auto maxEntry = *companyPrices.rbegin();
+
+    // Calculate mean
+    double total = 0;
+    for (const auto& entry : companyPrices) {
+        total += entry.first;
+    }
+    double mean = total / companyPrices.size();
+
+    // Print summary
+    std::cout << "Price Summary:\n";
+    std::cout << "Min Price: $" << std::fixed << std::setprecision(2) << minEntry.first
+              << " (Company: " << minEntry.second << ")\n";
+    std::cout << "Max Price: $" << maxEntry.first
+              << " (Company: " << maxEntry.second << ")\n";
+    std::cout << "Mean Price: $" << mean << "\n\n";
+
+    // Print all sorted prices
+    std::cout << "All Prices (sorted):\n";
+    for (const auto& entry : companyPrices) {
+        std::cout << "Price: $" << entry.first << ", Company: " << entry.second << "\n";
+    }
+}
 
 int main() {
     RobotRegistry registry;
@@ -17,7 +48,7 @@ int main() {
                 cout << "1. Load robots from file\n";
                 cout << "2. Add a new robot\n";
                 cout << "3. Display all robots\n";
-                cout << "4. Summary of prize";
+                cout << "4. Summary of prize\n";
                 cout << "5. Show robots above a price\n";
                 cout << "6. Display polymorphic robots\n";
                 cout << "7. Menu\n";
@@ -26,7 +57,7 @@ int main() {
             menuShown = true;
         }
 
-        cout << "\nEnter your choice (7 to show menu): ";
+        cout << "\nEnter your choice (7 to show menu):";
         int choice;
         cin >> choice;
         
@@ -44,6 +75,7 @@ int main() {
                 string filename;
                 cout << "Enter filename: ";
                 getline(cin, filename);
+                cout << "===============================\n";
                 registry.readFromFile(filename);
                 break;
             }
@@ -51,14 +83,14 @@ int main() {
                 registry.promptUserForRobot();
                 break;
             case 3: {
+                cout << "===============================\n";
                 registry.displayRobots();
                 break;
             }
             case 4: {
                 auto prices = registry.getCompanyPrices();
-                for (const auto& entry : prices) {
-                cout << "Price: $" << fixed << setprecision(2) << entry.first
-                    << ", Company: " << entry.second << "\n";}
+                cout << "===============================\n";
+                printPriceSummary(prices);
                 break;
             }
           
@@ -67,6 +99,7 @@ int main() {
                 cout << "Enter minimum price: ";
                 cin >> minPrice;
                 cin.ignore();
+                cout << "===============================\n";
                 auto filter = registry.getExpensiveRobotsFilter(minPrice);
                 filter(); // call the lambda
                 break;
@@ -79,7 +112,7 @@ int main() {
                 cout << "1. Load robots from file\n";
                 cout << "2. Add a new robot\n";
                 cout << "3. Display all robots\n";
-                cout << "4. Summary of prize";
+                cout << "4. Summary of prize\n";
                 cout << "5. Show robots above a price\n";
                 cout << "6. Display polymorphic robots\n";
                 cout << "7. Menu\n";

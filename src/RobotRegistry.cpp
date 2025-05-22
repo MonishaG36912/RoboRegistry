@@ -139,7 +139,6 @@ std::multimap<double, std::string> RobotRegistry::getCompanyPrices() const {
     for (int i = 0; i < size; i++) {
         companyPrices.insert({robots[i].price, robots[i].company});
     }
-    
     return companyPrices;
 }
 void RobotRegistry::displayPolymorphicRobots() const {
@@ -249,6 +248,7 @@ string name, company, version, componentName;
         }
 
         addRobot(move(company), move(name), move(version), price, component);
+        cout << "===============================\n";
         cout << "Robot added successfully!\n";
     }
     
