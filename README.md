@@ -1,5 +1,8 @@
 # RoboRegistry
-
+![C++](https://img.shields.io/badge/C++-17-blue.svg)
+![OOP](https://img.shields.io/badge/Object_Oriented-Design-blueviolet.svg)
+![Polymorphism](https://img.shields.io/badge/Polymorphism-Supported-success.svg)
+![Memory Management](https://img.shields.io/badge/Memory-Safe-orange.svg)
 ## Table of Contents
 1. [Project Overview](#project-overview)
 2. [Features](#features)
