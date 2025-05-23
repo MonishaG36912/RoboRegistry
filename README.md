@@ -39,18 +39,6 @@ A comprehensive C++ application for managing a registry of humanoid robots using
 
 ## System Architecture
 
-```plaintext
-Main Program (main.cpp)
-│
-├── Robot Registry (RobotRegistry.h/.cpp)
-│
-├── HumanoidRobot (with optional RobotComponent)
-│
-└── Robot Types (Polymorphic)
-    ├── MilitaryRobot
-    ├── IndustrialRobot
-    └── DomesticRobot
-### System Architecture
 The Robot Registry System is built around three core components:
 
 1. **Main Program (main.cpp)**
